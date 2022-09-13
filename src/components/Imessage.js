@@ -1,12 +1,14 @@
 import React from 'react'
 import Sidebar from './Sidebar'
 import "./Imessage.css";
+import Chat from './Chat';
 
 const Imessage = () => {
   return (
     // Sidebar
     <div className="imessage">
-      <Sidebar/>
+      <Sidebar />
+      <Chat/>
     </div>
   )
 }
