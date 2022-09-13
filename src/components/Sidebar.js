@@ -1,12 +1,22 @@
 import React from 'react'
 import "./Sidebar.css";
-import {Avatar} from "@material-ui/core"
+import { Avatar, IconButton } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import RateReviewIcon from '@mui/icons-material/RateReview';
+
 const Sidebar = () => {
     return (
         <div className="sidebar">
-            <h1>im the sidebar !</h1>
             <div className="sidebar-header">
-            <Avatar/>
+                <Avatar className="sidebar-avatar"/>
+                <div className="sidebar-input">
+                    <SearchIcon />
+                    <input placeholder="Search" />
+                </div>
+                <IconButton variant="outlined" className="sidebar-inputBtn">
+                    <RateReviewIcon />
+                </IconButton>
+
 
             </div>
             <div className="sidebar-chats">
