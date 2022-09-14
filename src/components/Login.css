@@ -1,0 +1,36 @@
+.login {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.login-chat {
+    display: grid;
+    place-items: center;
+    gap: 30px;
+}
+
+.login-chat>img {
+    object-fit: contain;
+    height: 150px;
+}
+
+.login-chat>button {
+    width: 300px;
+    background-color: #3ea4fb;
+    font-weight: 800;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.login-chat>button:hover {
+    background-color: #C13584;
+}
+
+.chat-title {
+    font-family: 'Nabla', cursive;
+    color: #C13584;
+}
