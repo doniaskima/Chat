@@ -15,38 +15,33 @@ const Chat = () => {
     const chatName =useSelector(selectChatName);
     useEffect(() => {
         if (chatId) {
-            db.collection('chats')
-                .doc(chatId)
-                .collection("messages")
-                .orderBy('timestamp', 'desc')
-                .onSnapchot((snapshot) =>
+            db.collection("chats").doc(chatId).collection("messages").orderBy('timestamp', 'asc')
+                .onSnapshot(docsnap => (
                     setMessages(
-                        snapshot.docs.map((doc) => ({
+                        docsnap.docs.map(doc => ({
                             id: doc.id,
                             data: doc.data()
-                    
                         }))
                     )
-                );
-            // the doc is going to be the chat id
-            //enter that chat and then we're going to say go into collection inside of that chat and accedd messages
+                ))
+        }
+        return () => {
+
         }
     }, [chatId])
+
     const sendMessage = (e) => {
         e.preventDefault();
-        db.collection('chats')
-            .doc(chatId)
-            .collection("messages")
-            .add({
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                message: input,
-                uid: user.uid,
-                photo: user.photo,
-                email: user.email,
-                displayName:user.displayName,
+        db.collection('chats').doc(chatId).collection("messages").add({
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            message: input,
+            uid: user.uid,
+            photo: user.photo,
+            email: user.email,
+            displayName: user.displayName
         })
 
-        setInput("");
+        setInput("")
     }
     return (
         <div className="chat">
