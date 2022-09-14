@@ -1,13 +1,19 @@
 import React from 'react'
 import "./Login.css"
-import login from "../assets/messanger.png"
+import login from "../assets/messanger.png";
+import { auth, provider } from "./firebase";
 const Login = () => {
-  return (
+    const signIn = () => {
+        auth.signInWithPopup(provider)
+            .catch(error => alert(error.message));
+    }
+    return (
+     
       <div className="login">
           <div className="login-chat">
               <img src={login} alt="logo" />
               <h1 className="chat-title">Chat</h1>
-              <button>Sign In</button>
+                <button onClick={signIn}>Sign In</button>
           </div>
       </div>
   )
