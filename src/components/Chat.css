@@ -49,4 +49,14 @@
 
 .chat-msg {
     flex: 1;
+    overflow: scroll;
+}
+
+.chat-msg ::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-msg {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

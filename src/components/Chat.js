@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import "./Chat.css";
 import MicNoneIcon from '@mui/icons-material/MicNone';
-import Message from "./message";
+import Message from "./Message";
 import { selectChatId, selectChatName } from '../features/chatSlice';
 import { useSelector } from 'react-redux';
 import db from './firebase';
 import firebase from "firebase";
 import { selectUser } from '../features/userSlice';
+import FlipMove from "react-flip-move"
 const Chat = () => {
     const user = useSelector(selectUser)
     const [input, setInput] = useState('')
     const [messages, setMessages] = useState([]);
     const chatId = useSelector(selectChatId);
-    const chatName =useSelector(selectChatName);
+    const chatName = useSelector(selectChatName);
     useEffect(() => {
         if (chatId) {
             db.collection("chats").doc(chatId).collection("messages").orderBy('timestamp', 'asc')
@@ -50,9 +51,12 @@ const Chat = () => {
                 <strong>Details</strong>
             </div>
             <div className="chat-msg">
-                {messages.map(({ id, data }) => (
-                    <Message key={id} contents={data}/>
-                ))}
+             
+                    {messages.map(({ id, data }) => (
+                        <Message key={id} contents={data} />
+                    ))}
+            
+                 
             </div>
 
             <div className="chatInput">
